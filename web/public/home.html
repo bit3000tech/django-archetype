@@ -1,0 +1,44 @@
+{% extends "base/base.html" %}
+
+{% block title %}Home - Django Template{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="jumbotron bg-primary text-white p-5 rounded">
+            <h1 class="display-4">Welcome to Django Template</h1>
+            <p class="lead">This is a Django project template with a modern structure and best practices.</p>
+            <hr class="my-4">
+            <p>Get started by exploring the sample module or creating your own apps.</p>
+            <a class="btn btn-light btn-lg" href="{% url 'sample:person_list' %}" role="button">View People</a>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Project Structure</h5>
+                <p class="card-text">Organized with separate folders for apps, templates, and configuration.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Sample Module</h5>
+                <p class="card-text">Includes a Person model with CRUD operations and forms.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Template Ready</h5>
+                <p class="card-text">Ready to use as a GitHub template for your Django projects.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

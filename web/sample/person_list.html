@@ -1,0 +1,38 @@
+{% extends "base/base.html" %}
+
+{% block title %}People - Django Template{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>People</h1>
+    <a href="{% url 'sample:person_create' %}" class="btn btn-primary">Add Person</a>
+</div>
+
+{% if people %}
+    <div class="row">
+        {% for person in people %}
+            <div class="col-md-6 col-lg-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ person.full_name }}</h5>
+                        <p class="card-text">
+                            <strong>Email:</strong> {{ person.email }}<br>
+                            <small class="text-muted">Created: {{ person.created_at|date:"M d, Y" }}</small>
+                        </p>
+                        <div class="btn-group btn-group-sm" role="group">
+                            <a href="{% url 'sample:person_detail' person.pk %}" class="btn btn-outline-primary">View</a>
+                            <a href="{% url 'sample:person_update' person.pk %}" class="btn btn-outline-secondary">Edit</a>
+                            <a href="{% url 'sample:person_delete' person.pk %}" class="btn btn-outline-danger">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="alert alert-info" role="alert">
+        <h4 class="alert-heading">No people found</h4>
+        <p>There are no people in the database yet. <a href="{% url 'sample:person_create' %}" class="alert-link">Add the first person</a>.</p>
+    </div>
+{% endif %}
+{% endblock %}

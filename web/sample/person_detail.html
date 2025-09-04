@@ -1,0 +1,38 @@
+{% extends "base/base.html" %}
+
+{% block title %}{{ person.full_name }} - Django Template{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h2>{{ person.full_name }}</h2>
+            </div>
+            <div class="card-body">
+                <dl class="row">
+                    <dt class="col-sm-3">First Name:</dt>
+                    <dd class="col-sm-9">{{ person.first_name }}</dd>
+                    
+                    <dt class="col-sm-3">Last Name:</dt>
+                    <dd class="col-sm-9">{{ person.last_name }}</dd>
+                    
+                    <dt class="col-sm-3">Email:</dt>
+                    <dd class="col-sm-9">{{ person.email }}</dd>
+                    
+                    <dt class="col-sm-3">Created:</dt>
+                    <dd class="col-sm-9">{{ person.created_at|date:"F d, Y g:i A" }}</dd>
+                    
+                    <dt class="col-sm-3">Updated:</dt>
+                    <dd class="col-sm-9">{{ person.updated_at|date:"F d, Y g:i A" }}</dd>
+                </dl>
+            </div>
+            <div class="card-footer">
+                <a href="{% url 'sample:person_list' %}" class="btn btn-secondary">Back to List</a>
+                <a href="{% url 'sample:person_update' person.pk %}" class="btn btn-primary">Edit</a>
+                <a href="{% url 'sample:person_delete' person.pk %}" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
