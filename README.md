@@ -54,6 +54,7 @@ django-template/
 - 🎨 **Bootstrap UI**: Modern, responsive interface with Bootstrap 5
 - 🔧 **Ready to Use**: Pre-configured settings and URL routing
 - 📝 **Best Practices**: Follows Django conventions and best practices
+- 🛠️ **Customization Script**: Easy project folder renaming with `customize_template.py`
 
 ## Quick Start
 
@@ -71,41 +72,80 @@ django-template/
    cd your-project-name
    ```
 
-3. **Create and activate virtual environment**:
+3. **Customize the project structure** (optional but recommended):
+   ```bash
+   python customize_template.py your_project_name
+   ```
+   This will rename the `project/` folder to your custom name and update all references.
+   
+   Example:
+   ```bash
+   python customize_template.py blog      # Creates blog/ folder
+   python customize_template.py shop      # Creates shop/ folder  
+   python customize_template.py my_app    # Creates my_app/ folder
+   ```
+
+4. **Create and activate virtual environment**:
    ```bash
    uv venv
    source .venv/bin/activate  # On Windows: .venv\Scripts\activate
    ```
 
-4. **Install dependencies**:
+5. **Install dependencies**:
    ```bash
    uv pip install -r requirements.txt
    ```
 
-5. **Run migrations**:
+6. **Run migrations**:
    ```bash
    python manage.py migrate
    ```
 
-6. **Create a superuser** (optional):
+7. **Create sample data** (optional):
+   ```bash
+   python manage.py create_sample_people --count 5
+   ```
+
+8. **Create a superuser** (optional):
    ```bash
    python manage.py createsuperuser
    ```
 
-7. **Start the development server**:
+9. **Start the development server**:
    ```bash
    python manage.py runserver
    ```
 
-8. **Visit your site** at `http://127.0.0.1:8000/`
+10. **Visit your site** at `http://127.0.0.1:8000/`
 
 ## Usage
 
+### Customizing Project Structure
+
+After cloning the template, you can customize the project folder name using the included script:
+
+```bash
+python customize_template.py your_project_name
+```
+
+**What the script does:**
+- Renames `project/` folder to `your_project_name/`
+- Updates all import statements in Python files
+- Updates references in README.md and pyproject.toml
+- Validates the project name for Python compatibility
+
+**Examples:**
+```bash
+python customize_template.py blog        # Creates blog/ folder for a blog project
+python customize_template.py ecommerce   # Creates ecommerce/ folder for online store
+python customize_template.py portfolio   # Creates portfolio/ folder for portfolio site
+```
+
 ### Creating New Apps
 
-1. Create your app in the `project/` directory:
+1. Create your app in your apps directory (default is `project/`, or your custom name):
    ```bash
-   cd project
+   cd project  # or cd your_custom_name
    python ../manage.py startapp your_app_name
    ```
 
@@ -113,14 +153,14 @@ django-template/
    ```python
    class YourAppConfig(AppConfig):
        default_auto_field = 'django.db.models.BigAutoField'
-       name = 'project.your_app_name'
+       name = 'project.your_app_name'  # or 'your_custom_name.your_app_name'
    ```
 
 3. Add your app to `INSTALLED_APPS` in `config/settings.py`:
    ```python
    INSTALLED_APPS = [
        # ... other apps
-       'project.your_app_name',
+       'project.your_app_name',  # or 'your_custom_name.your_app_name'
    ]
    ```
 

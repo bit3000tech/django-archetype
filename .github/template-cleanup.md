@@ -13,6 +13,7 @@ This template provides a modern, well-structured Django project with best practi
 - ✅ Test suite setup
 - ✅ Management commands
 - ✅ uv package manager integration
+- ✅ Project customization script
 
 ## Quick Start
 
@@ -21,20 +22,26 @@ This template provides a modern, well-structured Django project with best practi
    curl -LsSf https://astral.sh/uv/install.sh | sh
    ```
 
-2. **Set up your environment**:
+2. **Customize your project structure** (recommended):
+   ```bash
+   python customize_template.py your_project_name
+   ```
+   This renames the `project/` folder to your custom name and updates all references.
+
+3. **Set up your environment**:
    ```bash
    uv venv
    source .venv/bin/activate  # On Windows: .venv\Scripts\activate
    uv pip install -r requirements.txt
    ```
 
-3. **Initialize your database**:
+4. **Initialize your database**:
    ```bash
    python manage.py migrate
    python manage.py create_sample_people --count 5
    ```
 
-4. **Start developing**:
+5. **Start developing**:
    ```bash
    python manage.py runserver
    ```
@@ -43,12 +50,14 @@ Visit `http://127.0.0.1:8000/` to see your new Django project!
 
 ## Next Steps
 
+- [ ] Run the customization script with your project name
 - [ ] Update `README.md` with your project details
 - [ ] Customize the base template in `web/base/base.html`
 - [ ] Remove the sample app if not needed
-- [ ] Add your own apps in the `project/` directory
+- [ ] Add your own apps in your apps directory
 - [ ] Configure your database settings
 - [ ] Set up your deployment pipeline
+- [ ] Delete `customize_template.py` when you're done customizing
 
 ## Need Help?
 
